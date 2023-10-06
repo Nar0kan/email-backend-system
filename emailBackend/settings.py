@@ -7,7 +7,7 @@ env = environ.Env(
     DEBUG=(bool, True)
 )
 
-READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=True)
+READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -18,7 +18,7 @@ if READ_DOT_ENV_FILE:
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 
 # Application definition
