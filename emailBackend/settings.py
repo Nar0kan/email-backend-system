@@ -7,7 +7,7 @@ env = environ.Env(
     DEBUG=(bool, True)
 )
 
-READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
+READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=True)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -70,8 +70,12 @@ WSGI_APPLICATION = 'emailBackend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
